@@ -3,88 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beefy Plan - MycatHost</title>
+    <title>Ultimate Plan - MycatHost</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a; /* Tmavé pozadí */
+            background-color: #1a1a1a;
             display: flex;
             flex-direction: column;
-            height: 100vh; /* Výška stránky */
+            min-height: 100vh; /* lepší než pevná výška */
         }
         .header {
-            background-color: #007BFF; /* Modrý pruh */
+            background-color: #007BFF;
             padding: 20px;
-            text-align: left; /* Nápis vlevo */
+            text-align: left;
         }
         .header h1 {
             color: white;
             display: inline;
+            font-size: 28px;
         }
         .header h1 span {
-            color: red; /* Červená barva pro "Host" */
+            color: red;
         }
         .nav {
-            background-color: #333; /* Tmavě šedé pozadí pro prokliky */
+            background-color: #333;
             padding: 10px;
             text-align: center;
-            margin-top: 20px; /* Posun dolů */
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
         .nav a {
-            margin: 0 15px;
             text-decoration: none;
-            font-size: 24px;
-            padding: 10px 20px;
+            font-size: 20px;
+            padding: 8px 16px;
             border-radius: 5px;
             color: white;
+            display: inline-block;
         }
-        .basic {
-            background-color: #0056b3; /* Světlejší modrá pro Basic */
-        }
-        .beefy {
-            background-color: #edda5f; /* Světle žlutá pro Beefy */
-        }
-        .ultimate {
-            background-color: purple; /* Fialová barva pro Ultimate */
-        }
-        .about {            
-            background-color: black; /* Bílá pro About Us */
-            color: black; /* Černé písmo pro About Us */
-        }
+        .basic { background-color: #2C89E8; }
+        .beefy { background-color: #C9A710; }
+        .ultimate { background-color: purple; }
+        .about { background-color: black; color: white; }
         .block {
             width: 90%;
-            margin: 20px auto;
-            padding: 40px; /* Tlustší bloky */
-            font-size: 24px; /* Větší text */
+            margin: 15px auto;
+            padding: 20px;
+            font-size: 18px;
             color: white;
             border-radius: 5px;
-            flex: 1; /* Bloky se roztáhnou, aby vyplnily prostor */
         }
-        .block:nth-child(odd) {
-            background-color: #333; /* Tmavě šedá */
-        }
-        .block:nth-child(even) {
-            background-color: #007BFF; /* Modrá */
-        }
+        .block:nth-child(odd) { background-color: #333; }
+        .block:nth-child(even) { background-color: #007BFF; }
+
         .features {
-            background-color: #edda5f; /* Barva obdélníku pro Beefy plán */
-            padding: 40px;
-            margin: 20px auto;
+            background-color: #0056b3;
+            padding: 20px;
+            margin: 15px auto;
             border-radius: 5px;
-            text-align: left; /* Text začínající zleva */
-            width: 90%; /* Šířka pro obdélník */
-            color: black; /* Černé písmo pro vlastnosti */
+            text-align: left;
+            width: 90%;
+            color: black;
+            font-size: 18px;
+        }
+        .features h2 {
+            color: white;
+            margin-top: 0;
         }
         .checkmark {
-            color: lime; /* Zelená barva pro fajvky */
+            color: lime;
         }
+
         .footer {
             text-align: center;
             padding: 10px;
-            color: white; /* Bílé písmo pro footer */
-            margin-top: auto; /* Posunout footer dolů */
+            color: white;
+            margin-top: auto;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVNÍ úpravy pro mobily */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 22px;
+            }
+            .nav {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .nav a {
+                font-size: 16px;
+                padding: 10px;
+                width: 90%; /* odkazy na mobilu široké */
+            }
+            .block, .features {
+                font-size: 16px;
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -100,13 +119,15 @@
         <a href="https://luky1212.github.io/MycatHost.cz-Ultimate/" class="ultimate">Ultimate</a>
         <a href="https://luky1212.github.io/MycatHost.cz-AboutUs/" class="about">About Us</a>
     </div>
-    
+
     <div class="features">
-        <h2>Vlastnosti Beefy plánu</h2>
+        <h2>Vlastnosti Ultimate plánu</h2>
         <p>Neomezený přístup k serverům <span class="checkmark">✔️</span></p>
-        <p>Podpora pro modifikace <span class="checkmark">✔️</span></p>
-        <p>Automatické zálohování <span class="checkmark">✔️</span></p>
+        <p>Podpora pro modifikace <span style="color: red;">❌</span></p>
+        <p>Automatické zálohování <span style="color: red;">❌</span></p>
     </div>
 
-    <div
+    <div class="footer">Malý bílý text na dně stránky</div>
 
+</body>
+</html>
