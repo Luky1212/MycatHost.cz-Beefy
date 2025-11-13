@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <link rel="icon" type="image/png" href="favicon-32x32.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MycatHost 3D Tisk</title>
+    <title>MycatHost – 3D Tisk</title>
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+
     <style>
+        * { box-sizing: border-box; }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #1a1a1a;
-            color: white;
+            color: #fff;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Horní lišta */
+        /* --- HLAVIČKA --- */
         .top-right-logo {
             position: fixed;
             top: 10px;
@@ -34,19 +37,21 @@
             text-align: left;
         }
         .header h1 {
-            color: white;
-            display: inline;
+            margin: 0;
             font-size: 28px;
+        }
+        .header a {
+            color: white;
+            text-decoration: none;
         }
         .header h1 span {
             color: red;
         }
 
-        /* Navigace */
+        /* --- NAVIGACE --- */
         .nav {
             background-color: #333;
             padding: 14px;
-            text-align: center;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -54,8 +59,8 @@
         }
         .nav a {
             position: relative;
-            text-decoration: none;
             color: white;
+            text-decoration: none;
             display: inline-flex;
             align-items: flex-end;
             justify-content: center;
@@ -65,85 +70,80 @@
             overflow: hidden;
             background-size: cover;
             background-position: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: transform 0.15s ease;
         }
         .nav a span {
-            display: inline-block;
             width: 100%;
             text-align: center;
             background: rgba(0,0,0,0.45);
             padding: 8px 6px;
-            box-sizing: border-box;
         }
-
-        /* Obrázky tlačítek */
-        .nav a.basic { background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstore-images.s-microsoft.com%2Fimage%2Fapps.60323.14294656681058683.4d17bdd8-7026-429a-846f-cf7836bc9e56.a69e6905-8926-4a48-b243-14a039b97aae%3Fmode%3Dscale%26q%3D90%26h%3D1080%26w%3D1920%26format%3Djpg&f=1&nofb=1&ipt=35bad4cdba6348e2db85f339229c3cdf3cc17272f7b5658865b028c32e0cccc0'); }
-        .nav a.beefy { background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs1.raise3d.com%2F2024%2F11%2F7-min.jpg&f=1&nofb=1&ipt=2b99ee76aa68aefc2cf531d846d3561bd326fe49f89c3bf9e14efc09797e5db4'); }
-        .nav a.ultimate { background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsteamcdn-a.akamaihd.net%2Fsteamcommunity%2Fpublic%2Fimages%2Fitems%2F304930%2Fc5bc3d72f1f11f4644856d04cc038ee93dfa070d.jpg&f=1&nofb=1&ipt=7e64988cdc8adc758dda9192c5f50fe803427af4c2c24bb893ab3dff949f26d3'); }
-        .nav a.about { background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Firegister.al%2Fwp-content%2Fuploads%2F2019%2F04%2Fserver-hosting.jpeg&f=1&nofb=1&ipt=1f27c4adb78638a8e9f8c17feeec89106489f91db57c147766480a26a051e4ee'); }
-        .nav a.dalsi { background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fman-fix-server-network-data-center-room-67131350.jpg&f=1&nofb=1&ipt=d2623d46b4e886c4ed0afa171f4b77a82b29dff44e714d226f2a69ccdf217fe7'); }
-
         .nav a:hover {
             transform: translateY(-4px);
-            transition: transform 0.15s ease;
         }
 
-        /* Obsah */
+        .nav a.basic { background-image: url('https://store-images.s-microsoft.com/image/apps.60323.14294656681058683.4d17bdd8-7026-429a-846f-cf7836bc9e56.a69e6905-8926-4a48-b243-14a039b97aae?mode=scale&q=90&h=1080&w=1920&format=jpg'); }
+        .nav a.beefy { background-image: url('https://s1.raise3d.com/2024/11/7-min.jpg'); }
+        .nav a.about { background-image: url('https://iregister.al/wp-content/uploads/2019/04/server-hosting.jpeg'); }
+        .nav a.dalsi { background-image: url('https://thumbs.dreamstime.com/b/man-fix-server-network-data-center-room-67131350.jpg'); }
+
+        /* --- OBSAH --- */
         .content {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
+            max-width: 900px;
+            margin: 40px auto;
             background: #222;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 12px;
             box-shadow: 0 0 20px rgba(0,0,0,0.4);
         }
         .content h2 {
             color: #00BFFF;
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .content p {
             font-size: 18px;
             line-height: 1.6;
             margin-bottom: 15px;
         }
-
         .image-section {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 25px;
         }
         .image-section img {
-            width: 80%;
+            width: 85%;
             max-width: 600px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0,0,0,0.6);
         }
 
+        /* --- PATIČKA --- */
         .footer {
             text-align: center;
-            padding: 10px;
-            color: #ccc;
-            margin-top: auto;
-            font-size: 14px;
+            padding: 12px;
+            color: #ddd;
             background: #111;
+            font-size: 14px;
+            margin-top: auto;
         }
 
+        /* --- RESPONSIVNÍ --- */
         @media (max-width: 600px) {
             .nav { flex-direction: column; }
             .nav a { width: 90%; height: 100px; }
-            .content { width: 90%; }
+            .content { width: 90%; padding: 20px; }
         }
     </style>
 </head>
-<body>
 
+<body>
     <div class="header">
         <div class="top-right-logo">
             <img src="favicon-32x32.png" alt="Logo">
         </div>
-        <h1><a href="https://mycathost.cz" style="color: white; text-decoration: none;">Mycat<span>Host</span></a></h1>
+        <h1><a href="https://mycathost.cz">Mycat<span>Host</span></a></h1>
     </div>
 
     <div class="nav">
@@ -163,15 +163,13 @@
         </div>
 
         <h2>Jak objednat</h2>
-        <p>Pošlete nám e-mail na <b>info@mycathost.cz</b> s popisem, co chcete tisknout, a přiložte model. Odpovíme Vám s cenovou nabídkou a možnými variantami materiálu.</p>
+        <p>Pošlete nám e-mail na <b>info@mycathost.cz</b> s popisem, co chcete tisknout, a přiložte model. Odpovíme Vám s cenovou nabídkou a možnostmi materiálů.</p>
         <p><b>Platby:</b> hotově, QR kódem nebo převodem na účet.</p>
 
-        <h2>Ceny</h2>
+        <h2>Ceník</h2>
         <p>Cena tisku se odvíjí od hmotnosti materiálu a složitosti modelu. Přibližně od <b>3 Kč za gram materiálu</b>.</p>
     </div>
 
     <div class="footer">© 2025 MycatHost.cz — 3D tisk & Minecraft hosting</div>
-
 </body>
 </html>
-
